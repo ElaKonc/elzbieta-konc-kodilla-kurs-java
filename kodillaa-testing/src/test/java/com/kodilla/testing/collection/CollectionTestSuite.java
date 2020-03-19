@@ -16,9 +16,11 @@ public class CollectionTestSuite {
     }
 
     @Test
-    public void testOddNumbersExterminatorEmptyList(ArrayList<Integer> numbers) {
+    public void testOddNumbersExterminatorEmptyList() {
 
-        if(numbers==null){
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        if(numbers == null){
             System.out.println("Brak zawartości");
         }
     }
@@ -27,13 +29,13 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorNormalList() {
 
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
+        numbers.add(0, 1);
+        numbers.add(1,2);
+        numbers.add(2,3);
+        numbers.add(3,4);
+        numbers.add(4,5);
 
-        System.out.println(OddNumbersExterminator.exterminate(numbers));
+        System.out.println(OddNumbersExterminator.exterminate());
     }
 
 
