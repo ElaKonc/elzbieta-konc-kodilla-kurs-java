@@ -4,17 +4,17 @@ import java.util.*;
 
 public class OddNumbersExterminator {
 
-    public static List<Integer> exterminate() {
+    public static List<Integer> exterminate(List<Integer> numbers) {
 
-        List<Integer> euqalsNumbers = new ArrayList<Integer>();
+        List<Integer> equalsNumbers = new ArrayList<Integer>();
 
-        for(Integer n : euqalsNumbers) {
+        for(Integer n : numbers) {
             if(n % 2 == 0){
-                euqalsNumbers.add(n);
+                equalsNumbers.add(n);
             }
         }
 
-        return euqalsNumbers;
+        return equalsNumbers;
     }
 
 }
