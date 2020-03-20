@@ -38,10 +38,8 @@ public class CollectionTestSuite {
         numbers.add(4);
         numbers.add(5);
 
-        List<Integer> result = OddNumbersExterminator.exterminate(numbers);
+        Assert.assertFalse(numbers.isEmpty());
 
-        Assert.assertFalse(result.isEmpty());
-
-        System.out.println(OddNumbersExterminator.exterminate(result));
+        System.out.println(OddNumbersExterminator.exterminate(numbers));
     }
 }
