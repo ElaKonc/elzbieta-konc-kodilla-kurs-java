@@ -4,12 +4,12 @@ public class ForumComment {
 
     ForumPost forumPost;
     String commentBody;
-    String commentAuthor;
+    String author;
 
-    public ForumComment(ForumPost forumPost, String commentBody, String commentAuthor) {
+    public ForumComment(ForumPost forumPost, String commentBody, String author) {
         this.forumPost = forumPost;
         this.commentBody = commentBody;
-        this.commentAuthor = commentAuthor;
+        this.author = author;
     }
 
     public ForumPost getForumPost() {
@@ -20,8 +20,8 @@ public class ForumComment {
         return commentBody;
     }
 
-    public String getCommentAuthor() {
-        return commentAuthor;
+    public String getAuthor() {
+        return author;
     }
 
     @Override
@@ -33,14 +33,14 @@ public class ForumComment {
 
         if (!forumPost.equals(that.forumPost)) return false;
         if (!commentBody.equals(that.commentBody)) return false;
-        return commentAuthor.equals(that.commentAuthor);
+        return author.equals(that.author);
     }
 
     @Override
     public int hashCode() {
         int result = forumPost.hashCode();
         result = 31 * result + commentBody.hashCode();
-        result = 31 * result + commentAuthor.hashCode();
+        result = 31 * result + author.hashCode();
         return result;
     }
 }

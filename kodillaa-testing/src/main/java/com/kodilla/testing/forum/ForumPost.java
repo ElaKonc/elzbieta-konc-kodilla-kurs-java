@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class ForumPost {
 
-    String userNick;
-    String author;
+    private String postBody;
+    private String author;
 
-    public ForumPost(String userNick, String author) {
-        this.userNick = userNick;
+    public ForumPost(String postBody, String author) {
+        this.postBody = postBody;
         this.author = author;
     }
 
-    public String getUserNick() {
-        return userNick;
+    public String getPostBody() {
+        return postBody;
     }
 
     public String getAuthor() {
@@ -27,13 +27,13 @@ public class ForumPost {
 
         ForumPost forumPost = (ForumPost) o;
 
-        if (!userNick.equals(forumPost.userNick)) return false;
+        if (!postBody.equals(forumPost.postBody)) return false;
         return author.equals(forumPost.author);
     }
 
     @Override
     public int hashCode() {
-        int result = userNick.hashCode();
+        int result = postBody.hashCode();
         result = 31 * result + author.hashCode();
         return result;
     }
