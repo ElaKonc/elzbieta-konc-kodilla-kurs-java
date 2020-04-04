@@ -32,13 +32,11 @@ public class ShapeCollectorTestSuite {
 
         shapeCollector.addFigure(triangle);
 
-        int size = shapeCollector.getShapesSize();
-
-        Assert.assertEquals(1, size);
+        Assert.assertEquals(1, shapeCollector.showFigures().size());
     }
 
     @Test
-    public void testAddMoreFigures() {
+    public void testAddThreeFigures() {
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape triangle = new Triangle("triangle", 2,3);
         Shape circle = new Circle("ciricle", 2);
@@ -48,9 +46,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(square);
 
-        int size = shapeCollector.getShapesSize();
-
-        Assert.assertEquals(3, size);
+        Assert.assertEquals(3, shapeCollector.showFigures().size());
     }
 
     @Test
@@ -64,15 +60,18 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(square);
 
-        String shape1 = shapeCollector.getFigure(1).toString();
-        int sizeAddList = shapeCollector.getShapesSize();
+        String shape1a = shapeCollector.getFigure(0).toString();
+        String shape2a = shapeCollector.getFigure(1).toString();
+        int sizeAddList = shapeCollector.showFigures().size();
 
         shapeCollector.removeFigure(circle);
-        String shape2 = shapeCollector.getFigure(1).toString();
-        int sizeRemoveList = shapeCollector.getShapesSize();
+        String shape1b = shapeCollector.getFigure(0).toString();
+        String shape2b = shapeCollector.getFigure(1).toString();
+        int sizeRemoveList = shapeCollector.showFigures().size();
 
         Assert.assertTrue(sizeAddList>sizeRemoveList);
-        Assert.assertFalse(shape1.contains(shape2));
+        Assert.assertTrue(shape1a.contains(shape1b));
+        Assert.assertFalse(shape2a.contains(shape2b));
     }
 
     @Test
@@ -86,10 +85,10 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(triangle2);
         shapeCollector.addFigure(triangle3);
 
-        int sizeAddList = shapeCollector.getShapesSize();
+        int sizeAddList = shapeCollector.showFigures().size();
 
         shapeCollector.removeFigure(triangle1);
-        int sizeRemoveList = shapeCollector.getShapesSize();
+        int sizeRemoveList = shapeCollector.showFigures().size();
 
         Assert.assertTrue(sizeAddList>sizeRemoveList);
         Assert.assertEquals(shapeCollector.getFigure(0), triangle2);
@@ -113,16 +112,13 @@ public class ShapeCollectorTestSuite {
         shapesCollect.add(circle);
         shapesCollect.add(square);
 
-        List<Shape> shapeList = shapeCollector.showFigures();
-
-        int sizeAddList = shapeCollector.getShapesSize();
+        int sizeAddList = shapeCollector.showFigures().size();
 
         shapeCollector.removeFigure(circle1);
 
-        int sizeRemoveList = shapeCollector.getShapesSize();
+        int sizeRemoveList = shapeCollector.showFigures().size();
 
         Assert.assertEquals(sizeAddList, sizeRemoveList);
-        Assert.assertEquals(shapesCollect.toString(), shapeList.toString());
     }
 
     @Test
