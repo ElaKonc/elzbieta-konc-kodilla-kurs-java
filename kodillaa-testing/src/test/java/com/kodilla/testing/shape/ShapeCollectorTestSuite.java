@@ -60,18 +60,11 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(square);
 
-        String shape1a = shapeCollector.getFigure(0).toString();
-        String shape2a = shapeCollector.getFigure(1).toString();
-        int sizeAddList = shapeCollector.showFigures().size();
-
         shapeCollector.removeFigure(circle);
-        String shape1b = shapeCollector.getFigure(0).toString();
-        String shape2b = shapeCollector.getFigure(1).toString();
-        int sizeRemoveList = shapeCollector.showFigures().size();
 
-        Assert.assertTrue(sizeAddList>sizeRemoveList);
-        Assert.assertTrue(shape1a.contains(shape1b));
-        Assert.assertFalse(shape2a.contains(shape2b));
+        Assert.assertEquals(2, shapeCollector.showFigures().size());
+        Assert.assertEquals(triangle, shapeCollector.getFigure(0));
+        Assert.assertEquals(square, shapeCollector.getFigure(1));
     }
 
     @Test
@@ -85,12 +78,9 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(triangle2);
         shapeCollector.addFigure(triangle3);
 
-        int sizeAddList = shapeCollector.showFigures().size();
-
         shapeCollector.removeFigure(triangle1);
-        int sizeRemoveList = shapeCollector.showFigures().size();
 
-        Assert.assertTrue(sizeAddList>sizeRemoveList);
+        Assert.assertEquals(2, shapeCollector.showFigures().size());
         Assert.assertEquals(shapeCollector.getFigure(0), triangle2);
         Assert.assertEquals(shapeCollector.getFigure(1), triangle3);
     }
@@ -107,18 +97,9 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(circle);
         shapeCollector.addFigure(square);
 
-        List<Shape> shapesCollect = new ArrayList<Shape>();
-        shapesCollect.add(triangle);
-        shapesCollect.add(circle);
-        shapesCollect.add(square);
-
-        int sizeAddList = shapeCollector.showFigures().size();
-
         shapeCollector.removeFigure(circle1);
 
-        int sizeRemoveList = shapeCollector.showFigures().size();
-
-        Assert.assertEquals(sizeAddList, sizeRemoveList);
+        Assert.assertEquals(3, shapeCollector.showFigures().size());
     }
 
     @Test
