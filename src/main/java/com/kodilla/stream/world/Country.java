@@ -4,23 +4,15 @@ import java.math.BigDecimal;
 
 public final class Country {
     final private String nameCountry;
-    final private BigDecimal population;
+    final private BigDecimal populationOfCountry;
 
-    public Country(String nameCountry, BigDecimal population) {
+    public Country(String nameCountry, BigDecimal populationOfCountry) {
         this.nameCountry = nameCountry;
-        this.population = population;
-    }
-
-    public Country(String nameCountry){
-        this(nameCountry, new BigDecimal("1111111111"));
-    }
-
-    public String getNameCountry() {
-        return nameCountry;
+        this.populationOfCountry = populationOfCountry;
     }
 
     public BigDecimal getPeopleQuantity() {
-        return population;
+        return populationOfCountry;
     }
 
     @Override
@@ -30,14 +22,11 @@ public final class Country {
 
         Country country = (Country) o;
 
-        if (!nameCountry.equals(country.nameCountry)) return false;
-        return population.equals(country.population);
+        return nameCountry.equals(country.nameCountry);
     }
 
     @Override
     public int hashCode() {
-        int result = nameCountry.hashCode();
-        result = 31 * result + population.hashCode();
-        return result;
+        return nameCountry.hashCode();
     }
 }

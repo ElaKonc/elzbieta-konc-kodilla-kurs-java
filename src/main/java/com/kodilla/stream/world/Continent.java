@@ -11,15 +11,11 @@ public final class Continent {
         this.nameContinent = nameContinent;
     }
 
-    public String getNameContinent() {
-        return nameContinent;
-    }
-
     public List<Country> getListOfCountries() {
         return listOfCountries;
     }
 
-    public boolean addCountry(Country country) {
-        return listOfCountries.add(country);
+    public void addCountry(Country country) {
+        listOfCountries.add(country);
     }
 }

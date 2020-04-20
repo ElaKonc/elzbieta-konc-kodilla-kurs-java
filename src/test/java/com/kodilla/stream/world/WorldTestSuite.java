@@ -8,38 +8,29 @@ import java.math.BigDecimal;
 public class WorldTestSuite {
     @Test
     public void testGetPeopleQuantity() {
-        Country poland = new Country("Polska");
-        Country german = new Country("Niemcy");
-        Country france = new Country("Francja");
-        Country china = new Country("Chiny");
-        Country japan = new Country("Japonia");
-        Country india = new Country("Indie");
-        Country usa = new Country("USA");
-        Country canada = new Country("Kanada");
-        Country mexico = new Country("Meksyk");
+        World world = new World();
 
         Continent europe = new Continent("Europa");
         Continent asia = new Continent("Azja");
         Continent northAmerica = new Continent("Ameryka Północna");
 
-        World world = new World();
-
         world.addContinents(europe);
-        world.addContinents(asia);
-        world.addContinents(northAmerica);
+        europe.addCountry(new Country("Polska", new BigDecimal("111111111111")));
+        europe.addCountry(new Country("Niemcy", new BigDecimal("111111111111")));
+        europe.addCountry(new Country("Francja", new BigDecimal("111111111111")));
 
-        europe.addCountry(poland);
-        europe.addCountry(german);
-        europe.addCountry(france);
-        asia.addCountry(china);
-        asia.addCountry(japan);
-        asia.addCountry(india);
-        northAmerica.addCountry(usa);
-        northAmerica.addCountry(canada);
-        northAmerica.addCountry(mexico);
+        world.addContinents(asia);
+        asia.addCountry(new Country("Chiny", new BigDecimal("111111111111")));
+        asia.addCountry(new Country("Japonia", new BigDecimal("111111111111")));
+        asia.addCountry(new Country("Indie", new BigDecimal("111111111111")));
+
+        world.addContinents(northAmerica);
+        northAmerica.addCountry(new Country("USA", new BigDecimal("111111111111")));
+        northAmerica.addCountry(new Country("Kanada", new BigDecimal("111111111111")));
+        northAmerica.addCountry(new Country("Meksyk", new BigDecimal("111111111111")));
 
         BigDecimal populationOfWorld = world.getPeopleQuantity();
-        BigDecimal expectedPopulationOfWorld = new BigDecimal("9999999999");
+        BigDecimal expectedPopulationOfWorld = new BigDecimal("999999999999");
 
         Assert.assertEquals(expectedPopulationOfWorld, populationOfWorld);
     }
