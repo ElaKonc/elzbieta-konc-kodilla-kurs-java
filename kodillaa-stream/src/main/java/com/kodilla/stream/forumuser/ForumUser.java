@@ -1,7 +1,5 @@
 package com.kodilla.stream.forumuser;
 
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
 
 public class ForumUser {
