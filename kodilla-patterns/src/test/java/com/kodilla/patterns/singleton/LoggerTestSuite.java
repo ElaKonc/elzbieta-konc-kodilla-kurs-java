@@ -14,6 +14,6 @@ public class LoggerTestSuite {
         Logger.getInstance().log(log2);
         Logger.getInstance().log(log3);
 
-        Assert.assertEquals(log2, Logger.getInstance().getLastLog());
+        Assert.assertEquals(log3, Logger.getInstance().getLastLog());
     }
 }

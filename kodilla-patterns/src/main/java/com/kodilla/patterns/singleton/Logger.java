@@ -8,7 +8,11 @@ public class Logger {
 
     public static Logger getInstance() {
         if(loggerInstance == null){
-            loggerInstance = new Logger();
+            synchronized (Logger.class) {
+                if(loggerInstance ==null) {
+                    loggerInstance = new Logger();
+                }
+            }
         }
         return loggerInstance;
     }
