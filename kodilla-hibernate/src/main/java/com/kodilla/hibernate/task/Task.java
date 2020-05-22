@@ -45,19 +45,19 @@ public class Task {
         return duration;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
 
-    public void setCreated(Date created) {
+    private void setCreated(Date created) {
         this.created = created;
     }
 
-    public void setDuration(int duration) {
+    private void setDuration(int duration) {
         this.duration = duration;
     }
 }
