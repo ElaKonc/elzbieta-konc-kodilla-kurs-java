@@ -3,8 +3,9 @@ package com.kodilla.good.patterns.food2door;
 import java.util.*;
 
 public class GlutenFreeShop implements Producer{
-    private final Map<Product, Integer> productsList;
-    private final List<Customer> blackList;
+    private Map<Product, Integer> productsList;
+    private List<Customer> blackList;
+
 
     public GlutenFreeShop() {
         productsList = createProductList();
@@ -12,15 +13,13 @@ public class GlutenFreeShop implements Producer{
     }
 
     private Map<Product, Integer> createProductList() {
-
         Map<Product, Integer> productsList = new HashMap<>();
 
-
-        productsList.put(new Product("chleb", "pełnoziarnisty, razowy, 500g"), 50);
-        productsList.put(new Product("ryż", "długoziarnisty, biały, 1kg"), 150);
-        productsList.put(new Product("ciasteczka owsiane", "250g"), 20);
-        productsList.put(new Product("mąka ryżowa", "mąka ryżowa, 1kg"), 4);
-        productsList.put(new Product("kukurydza", "kolby, 3szt."), 10);
+        productsList.put(new ProductGlutenFree("chleb", "kukurydziany","bez glutenu"), 10);
+        productsList.put(new ProductGlutenFree("mąka ryżowa", "1 kg","bez glutenu"), 5);
+        productsList.put(new ProductGlutenFree("bułka", "kukurydziana","bez glutenu"), 20);
+        productsList.put(new ProductGlutenFree("ziemniaki", "1 kg","bez glutenu"), 0);
+        productsList.put(new ProductGlutenFree("orzechy", "włoskie","bez glutenu"), 50);
 
         return productsList;
     }
@@ -40,7 +39,7 @@ public class GlutenFreeShop implements Producer{
         for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()) {
             Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("Gluten Free Shop:\nPrzepraszamy,\nprodukt chwilowo niedostępny.");
+                System.out.println("Gluten Free Shop: Przepraszamy, chwilowo brak jednego z produktów");
                 return false;
             }
         }

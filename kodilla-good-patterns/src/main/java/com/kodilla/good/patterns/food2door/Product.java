@@ -1,12 +1,20 @@
 package com.kodilla.good.patterns.food2door;
 
 public class Product {
-    private final String productName;
-    private final String productDescription;
+    private String productName;
+    private String productDescription;
 
     public Product(String productName, String productDescription) {
         this.productName = productName;
         this.productDescription = productDescription;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                '}';
     }
 
     @Override
@@ -16,22 +24,14 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
+        if (!productName.equals(product.productName)) return false;
         return productDescription != null ? productDescription.equals(product.productDescription) : product.productDescription == null;
     }
 
     @Override
     public int hashCode() {
-        int result = productName != null ? productName.hashCode() : 0;
+        int result = productName.hashCode();
         result = 31 * result + (productDescription != null ? productDescription.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productName='" + productName + '\'' +
-                ", productDescription='" + productDescription + '\'' +
-                '}';
     }
 }
