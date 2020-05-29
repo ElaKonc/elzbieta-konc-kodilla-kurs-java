@@ -3,8 +3,8 @@ package com.kodilla.good.patterns.food2door;
 import java.util.*;
 
 public class ExtraFoodShop implements Producer{
-    private Map<Product, Integer> productsList;
-    private List<Customer> blackList;
+    private final Map<Product, Integer> productsList;
+    private final List<Customer> blackList;
 
 
     public ExtraFoodShop() {
@@ -15,15 +15,15 @@ public class ExtraFoodShop implements Producer{
     private Map<Product, Integer> createProductList() {
         Map<Product, Integer> productsList = new HashMap<>();
 
-        productsList.put(new ProductMeat("udko", "","kaczka"), 10);
-        productsList.put(new ProductMeat("szyja", "","indyk"), 5);
-        productsList.put(new ProductMeat("pierś", "","kurczak"), 20);
-        productsList.put(new ProductDairy("jogurt", "naturalny","nabiał"), 0);
-        productsList.put(new ProductDairy("jajka", "ekologiczne, 10 szt.","nabiał"), 50);
-        productsList.put(new ProductDairy("ser żółty", "gouda", "nabiał"), 20);
-        productsList.put(new ProductJuice("woda z kaktusa", "250 ml","woda"), 10);
-        productsList.put(new ProductJuice("sok z aloesa", "250 ml", "sok"), 5);
-        productsList.put(new ProductJuice("woda źródlana", "500 ml","woda"), 30);
+        productsList.put(new Product("udko", "kaczka"), 10);
+        productsList.put(new Product("szyja", "indyk"), 5);
+        productsList.put(new Product("pierś", "kurczak"), 20);
+        productsList.put(new Product("jogurt", "naturalny"), 0);
+        productsList.put(new Product("jajka", "ekologiczne, 10 szt."), 50);
+        productsList.put(new Product("ser żółty", "gouda"), 20);
+        productsList.put(new Product("woda z kaktusa", "250 ml"), 10);
+        productsList.put(new Product("sok z aloesa", "250 ml"), 5);
+        productsList.put(new Product("woda źródlana", "500 ml"), 30);
 
         return productsList;
     }
@@ -32,11 +32,6 @@ public class ExtraFoodShop implements Producer{
         List<Customer> blackList = new ArrayList<>();
         blackList.add(new Customer("Jan", "Kowalski"));
         return blackList;
-    }
-
-    @Override
-    public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
     }
 
     private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {
@@ -48,5 +43,10 @@ public class ExtraFoodShop implements Producer{
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
+        return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
     }
 }

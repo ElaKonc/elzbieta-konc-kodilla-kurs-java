@@ -9,6 +9,10 @@ public class Product {
         this.productDescription = productDescription;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
     @Override
     public String toString() {
         return "Product{" +

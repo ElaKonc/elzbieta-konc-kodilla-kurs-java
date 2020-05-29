@@ -15,18 +15,17 @@ public class GlutenFreeShop implements Producer{
     private Map<Product, Integer> createProductList() {
         Map<Product, Integer> productsList = new HashMap<>();
 
-        productsList.put(new ProductGlutenFree("chleb", "kukurydziany","bez glutenu"), 10);
-        productsList.put(new ProductGlutenFree("mąka ryżowa", "1 kg","bez glutenu"), 5);
-        productsList.put(new ProductGlutenFree("bułka", "kukurydziana","bez glutenu"), 20);
-        productsList.put(new ProductGlutenFree("ziemniaki", "1 kg","bez glutenu"), 0);
-        productsList.put(new ProductGlutenFree("orzechy", "włoskie","bez glutenu"), 50);
+        productsList.put(new Product("chleb", "kukurydziany, bez glutenu"), 10);
+        productsList.put(new Product("mąka ryżowa", "1 kg, bez glutenu"), 5);
+        productsList.put(new Product("bułka", "kukurydziana, bez glutenu"), 20);
+        productsList.put(new Product("ziemniaki", "1 kg, bez glutenu"), 0);
+        productsList.put(new Product("orzechy", "włoskie, bez glutenu"), 50);
 
         return productsList;
     }
 
     private List<Customer> createBlackList() {
         List<Customer> blackList = new ArrayList<>();
-        blackList.add(new Customer("Jan", "Kowalski"));
         return blackList;
     }
 
