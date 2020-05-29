@@ -47,6 +47,11 @@ public class ExtraFoodShop implements Producer{
 
     @Override
     public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
+        if(blackList.contains(customer)){
+            System.out.println("Prosimy o kontakt z obsługą: contact@extrafood-shop.com");
+            return (blackList.contains(customer) && isProductsAvailable(productsOrders));
+        } else {
+            return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
+        }
     }
 }

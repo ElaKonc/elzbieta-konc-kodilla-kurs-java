@@ -31,7 +31,12 @@ public class GlutenFreeShop implements Producer{
 
     @Override
     public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
+        if(blackList.contains(customer)){
+            System.out.println("Prosimy o kontakt z obsługą: contact@glutenfree.com");
+            return (blackList.contains(customer));
+        } else {
+            return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
+        }
     }
 
     private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {

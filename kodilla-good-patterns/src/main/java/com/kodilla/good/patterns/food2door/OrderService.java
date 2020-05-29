@@ -5,6 +5,7 @@ import java.util.List;
 public class OrderService {
     public void processAllOrders(List<OrderRequest> orderRequest) {
 
+
         orderRequest.stream()
                 .map(n -> {
                     System.out.println("Przetwarzanie zamówienia " + n.getCustomer().getFirstName() + " " + n.getCustomer().getLastName());
@@ -12,4 +13,5 @@ public class OrderService {
                 })
                 .forEach(t -> System.out.println("Zamówienie skompletowane: " + t + "\n"));
     }
+
 }
