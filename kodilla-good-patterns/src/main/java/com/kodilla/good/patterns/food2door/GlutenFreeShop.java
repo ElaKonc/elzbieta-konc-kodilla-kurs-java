@@ -3,13 +3,15 @@ package com.kodilla.good.patterns.food2door;
 import java.util.*;
 
 public class GlutenFreeShop implements Producer{
-    private Map<Product, Integer> productsList;
-    private List<Customer> blackList;
-
+    private final Map<Product, Integer> productsList;
 
     public GlutenFreeShop() {
         productsList = createProductList();
-        blackList = createBlackList();
+    }
+
+    @Override
+    public String name() {
+        return "GluteFree Shop";
     }
 
     private Map<Product, Integer> createProductList() {
@@ -24,26 +26,12 @@ public class GlutenFreeShop implements Producer{
         return productsList;
     }
 
-    private List<Customer> createBlackList() {
-        List<Customer> blackList = new ArrayList<>();
-        return blackList;
-    }
-
     @Override
     public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        if(blackList.contains(customer)){
-            System.out.println("Prosimy o kontakt z obsługą: contact@glutenfree.com");
-            return (blackList.contains(customer));
-        } else {
-            return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
-        }
-    }
-
-    private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {
         for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()) {
             Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("Gluten Free Shop: Przepraszamy, chwilowo brak jednego z produktów");
+                System.out.println("Gluten Free Shop: Przepraszamy, chwilowo brak jednego z produktów.\nProsimy o kontakt z obsługą: contact@glutenfree.com");
                 return false;
             }
         }

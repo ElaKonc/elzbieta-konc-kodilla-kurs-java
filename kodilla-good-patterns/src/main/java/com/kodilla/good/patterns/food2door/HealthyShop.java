@@ -4,12 +4,14 @@ import java.util.*;
 
 public class HealthyShop implements Producer {
     private Map<Product, Integer> productsList;
-    private List<Customer> blackList;
-
 
     public HealthyShop() {
         productsList = createProductList();
-        blackList = createBlackList();
+    }
+
+    @Override
+    public String name() {
+        return "Healthy Shop";
     }
 
     private Map<Product, Integer> createProductList() {
@@ -24,27 +26,12 @@ public class HealthyShop implements Producer {
         return productsList;
     }
 
-    private List<Customer> createBlackList() {
-        List<Customer> blackList = new ArrayList<>();
-        blackList.add(new Customer("Jan", "Kowalski"));
-        return blackList;
-    }
-
     @Override
     public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        if(blackList.contains(customer)){
-            System.out.println("Prosimy o kontakt z obsługą: contact@healthy-shop.com");
-            return (blackList.contains(customer));
-        } else {
-            return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
-        }
-    }
-
-    private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {
         for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()) {
             Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("Healthy Shop: Przepraszamy, chwilowo brak jednego z produktów");
+                System.out.println("Healthy Shop: Nie mamy wystarczającej ilości produktów do skompletowania zamówienia.\nProsimy o kontakt z obsługą: contact@healthy-shop.com");
                 return false;
             }
         }

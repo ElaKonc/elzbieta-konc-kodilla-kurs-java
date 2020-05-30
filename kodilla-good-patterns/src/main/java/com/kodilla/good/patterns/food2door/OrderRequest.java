@@ -7,7 +7,6 @@ public class OrderRequest {
     private final Producer producer;
     private final Map<Product, Integer> productOrderRequest;
 
-
     public OrderRequest(Customer customer, Producer producer, Map<Product, Integer> productOrderRequest) {
         this.customer = customer;
         this.producer = producer;

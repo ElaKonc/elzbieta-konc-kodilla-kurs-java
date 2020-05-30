@@ -4,12 +4,14 @@ import java.util.*;
 
 public class ExtraFoodShop implements Producer{
     private final Map<Product, Integer> productsList;
-    public final List<Customer> blackList;
-
 
     public ExtraFoodShop() {
         productsList = createProductList();
-        blackList = createBlackList();
+    }
+
+    @Override
+    public String name() {
+        return "Extra Food Shop";
     }
 
     private Map<Product, Integer> createProductList() {
@@ -28,30 +30,15 @@ public class ExtraFoodShop implements Producer{
         return productsList;
     }
 
-    private List<Customer> createBlackList() {
-        List<Customer> blackList = new ArrayList<>();
-        blackList.add(new Customer("Jan", "Kowalski"));
-        return blackList;
-    }
-
-    private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {
+    @Override
+    public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
         for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()) {
             Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("ExtraFood Shop: Przepraszamy, chwilowo brak jednego z produktów");
+                System.out.println("ExtraFood Shop: Przepraszamy, chwilowo brak jednego z produktów.\nProsimy o kontakt z obsługą: contact@extrafood-shop.com");
                 return false;
             }
         }
         return true;
-    }
-
-    @Override
-    public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
-        if(!blackList.contains(customer)){
-            return (!blackList.contains(customer) && isProductsAvailable(productsOrders));
-        } else {
-            System.out.println("Prosimy o kontakt z obsługą: contact@extrafood-shop.com");
-            return (blackList.contains(customer));
-        }
     }
 }

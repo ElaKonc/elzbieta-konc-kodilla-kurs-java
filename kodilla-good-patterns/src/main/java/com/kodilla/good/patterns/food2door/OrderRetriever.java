@@ -21,9 +21,9 @@ public class OrderRetriever {
         Customer customer2 = new Customer("Adam", "Nowak");
         Producer producer2 = new GlutenFreeShop();
         Map<Product, Integer> productsList2 = new HashMap<>();
-        productsList2.put(new Product("chleb", "kukurydziany, bez glutenu"), 2);
-        productsList2.put(new Product("bułka", "kukurydziana, bez glutenu"), 25);
-        productsList2.put(new Product("orzechy", "włoskie, bez glutenu"), 10);
+        productsList2.put(new Product("chleb", "kukurydziany, bez glutenu"), 1);
+        productsList2.put(new Product("bułka", "kukurydziana, bez glutenu"), 20);
+        productsList2.put(new Product("orzechy", "włoskie, bez glutenu"), 1);
 
         orderRequestList.add(new OrderRequest(customer2, producer2, productsList2));
 
